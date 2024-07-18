@@ -1,13 +1,18 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import Colors from '@/src/constants/Colors';
+import { Product } from '../types';
 
-// const product = products[1];
+export const DefaultPizzaimg = "https://hips.hearstapps.com/hmg-prod/images/pizza-1631065682.jpg?crop=0.5xw:1xh;center,top&resize=1200:*"
 
-const ProductListItems = ({ product }) => {
+type ProductListItemsProps = {
+  product: Product;
+};
+
+const ProductListItems = ({ product }: ProductListItemsProps) => {
   console.log(product)
   return (
     <View style={styles.container}>
-      <Image source={{ uri: product.image }} style={styles.image} />
+      <Image source={{ uri: product.image || DefaultPizzaimg}} style={styles.image} />
       <Text style={styles.title}>{product.name}</Text>
       <Text style={styles.price}>{'$' + product.price}</Text>
     </View>
