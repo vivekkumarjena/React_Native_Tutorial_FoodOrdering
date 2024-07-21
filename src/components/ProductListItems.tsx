@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import Colors from '@/src/constants/Colors';
 import { Product } from '../types';
+import { Link } from 'expo-router';
 
 export const DefaultPizzaimg = "https://hips.hearstapps.com/hmg-prod/images/pizza-1631065682.jpg?crop=0.5xw:1xh;center,top&resize=1200:*"
 
@@ -11,11 +12,17 @@ type ProductListItemsProps = {
 const ProductListItems = ({ product }: ProductListItemsProps) => {
   console.log(product)
   return (
-    <View style={styles.container}>
-      <Image source={{ uri: product.image || DefaultPizzaimg}} style={styles.image} />
-      <Text style={styles.title}>{product.name}</Text>
-      <Text style={styles.price}>{'$' + product.price}</Text>
-    </View>
+    <Link href={`/menu/${product.id}`} asChild>
+      <Pressable style={styles.container}>
+        <Image                                    //we can use pressable instead of view and use the onPress Function
+          source={{ uri: product.image || DefaultPizzaimg }}
+          style={styles.image}
+          resizeMode='contain'    //So that the whole image is visible   ;  By default it is 'cover'
+        />
+        <Text style={styles.title}>{product.name}</Text>
+        <Text style={styles.price}>{'$' + product.price}</Text>
+      </Pressable>
+    </Link>
   );
 }
 
@@ -26,6 +33,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 20,
     borderRadius: 20,
+    flex: 1,
+    maxWidth: '50%',
+    margin: 10,
   },
   title: {
     fontSize: 20,
