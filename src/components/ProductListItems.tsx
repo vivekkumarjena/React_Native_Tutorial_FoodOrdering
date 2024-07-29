@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import Colors from '@/src/constants/Colors';
 import { Product } from '../types';
-import { Link } from 'expo-router';
+import { Link, useSegments } from 'expo-router';
 
 export const DefaultPizzaimg = "https://hips.hearstapps.com/hmg-prod/images/pizza-1631065682.jpg?crop=0.5xw:1xh;center,top&resize=1200:*"
 
@@ -10,9 +10,10 @@ type ProductListItemsProps = {
 };
 
 const ProductListItems = ({ product }: ProductListItemsProps) => {
-  console.log(product)
+  const segments = useSegments()
+  console.log(segments)
   return (
-    <Link href={`/menu/${product.id}`} asChild>
+    <Link href={`/${segments[0]}/menu/${product.id}`} asChild>
       <Pressable style={styles.container}>
         <Image                                    //we can use pressable instead of view and use the onPress Function
           source={{ uri: product.image || DefaultPizzaimg }}
