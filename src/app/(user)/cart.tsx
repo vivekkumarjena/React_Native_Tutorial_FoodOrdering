@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import React from 'react'
 import { useCart } from '@/src/providers/CartProvider';
 import CartListItem from '@/src/components/CartListItem';

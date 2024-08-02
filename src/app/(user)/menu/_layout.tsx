@@ -7,7 +7,7 @@ export default function menuLayout() {
     return(
     <Stack screenOptions={{
         headerRight: () => (
-            <Link href="/cart" asChild>
+            <Link href="/(user)/cart/" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
