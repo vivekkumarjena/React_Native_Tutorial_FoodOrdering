@@ -7,7 +7,7 @@ export default function menuLayout() {
     return(
     <Stack>
         <Stack.Screen name="index" options={{title:'Menu' , headerRight: () => (
-            <Link href="/menu/create" asChild>
+            <Link href="/(admin)/menu/create" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
@@ -23,20 +23,7 @@ export default function menuLayout() {
 
 
 
-        <Stack.Screen name="[id]" options={{title:'Menu' , headerRight: () => (
-            <Link href="/menu" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="pencil"
-                    size={25}
-                    color='black'
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          )}} />
+        
     </Stack>
 ); 
 }
